@@ -1,0 +1,137 @@
+SAMPLE PROGRAM:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Blogging Platform</title>
+
+<!-- Internal CSS -->
+<style>
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #f8f9fa;
+margin: 0;
+padding: 0;
+}
+
+header {
+
+background-color: #343a40;
+color: white;
+text-align: center;
+padding: 1rem 0;
+}
+
+.container {
+width: 90%;
+max-width: 900px;
+margin: 20px auto;
+background: white;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+padding: 20px;
+}
+
+h2 {
+border-bottom: 2px solid #007bff;
+padding-bottom: 5px;
+}
+
+.post-form input, .post-form textarea {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border-radius: 5px;
+border: 1px solid #ccc;
+font-size: 1rem;
+}
+
+.post-form button {
+background-color: #007bff;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.post-form button:hover {
+background-color: #0056b3;
+}
+
+.post {
+border-bottom: 1px solid #ddd;
+margin-top: 20px;
+padding-bottom: 15px;
+}
+
+.post h3 {
+color: #333;
+}
+
+.post p {
+color: #555;
+}
+
+.footer {
+text-align: center;
+margin-top: 30px;
+padding: 15px;
+background: #343a40;
+color: white;
+font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>My Blogging Platform</h1>
+<p>Share your thoughts with the world!</p>
+</header>
+
+<div class="container">
+<h2>Create a New Post</h2>
+<div class="post-form">
+
+<input type="text" id="title" placeholder="Enter post title">
+<textarea id="content" rows="4" placeholder="Write your blog content here..."></textarea>
+<button onclick="addPost()">Publish Post</button>
+</div>
+
+<h2>Recent Posts</h2>
+<div id="posts"></div>
+</div>
+
+<div class="footer">
+<p>&copy; 2025 My Blogging Platform | Designed by You</p>
+</div>
+
+<!-- Internal JavaScript -->
+<script>
+function addPost() {
+const title = document.getElementById('title').value.trim();
+const content = document.getElementById('content').value.trim();
+const postsDiv = document.getElementById('posts');
+
+if (title === '' || content === '') {
+alert('Please enter both title and content!');
+return;
+}
+
+const post = document.createElement('div');
+post.classList.add('post');
+post.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+
+// Add new post to the top
+postsDiv.prepend(post);
+
+// Clear inputs
+document.getElementById('title').value = '';
+document.getElementById('content').value = '';
+}
+</script>
+</body>
+</html>
